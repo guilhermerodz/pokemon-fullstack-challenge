@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "type": "grass",
+    "color": "#78c850"
+  },
+  {
+    "id": 2,
+    "type": "poison",
+    "color": "#a040a0"
+  },
+  {
+    "id": 3,
+    "type": "fire",
+    "color": "#f08030"
+  },
+  {
+    "id": 4,
+    "type": "flying",
+    "color": "#a890f0"
+  },
+  {
+    "id": 5,
+    "type": "water",
+    "color": "#688fef"
+  },
+  {
+    "id": 6,
+    "type": "bug",
+    "color": "#9ea931"
+  },
+  {
+    "id": 7,
+    "type": "normal",
+    "color": "#a8a878"
+  },
+  {
+    "id": 8,
+    "type": "dark",
+    "color": "#6f5747"
+  },
+  {
+    "id": 9,
+    "type": "electric",
+    "color": "#f8d030"
+  },
+  {
+    "id": 10,
+    "type": "psychic",
+    "color": "#f85888"
+  },
+  {
+    "id": 11,
+    "type": "ice",
+    "color": "#98d8d8"
+  },
+  {
+    "id": 12,
+    "type": "steel",
+    "color": "#b8b8d0"
+  },
+  {
+    "id": 13,
+    "type": "ground",
+    "color": "#e0c068"
+  },
+  {
+    "id": 14,
+    "type": "fairy",
+    "color": "#f0b6bc"
+  },
+  {
+    "id": 15,
+    "type": "fighting",
+    "color": "#c03028"
+  },
+  {
+    "id": 16,
+    "type": "rock",
+    "color": "#b8a038"
+  },
+  {
+    "id": 17,
+    "type": "ghost",
+    "color": "#705898"
+  },
+  {
+    "id": 18,
+    "type": "dragon",
+    "color": "#7038f8"
+  }
+]
