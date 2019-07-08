@@ -2,6 +2,8 @@ import * as Yup from 'yup';
 
 import { Op } from 'sequelize';
 
+import IncludeType from '../util/IncludeType';
+
 import Pokemon from '../models/Pokemon';
 
 class PokemonController {
@@ -9,7 +11,7 @@ class PokemonController {
     const where = {};
     let order = ['id', 'ASC']; // ASC, DESC
     const page = req.query.page || 1;
-    const perPage = 10;
+    const perPage = 8;
 
     if (req.query.field && req.query.order) {
       order = [req.query.field, req.query.order];
@@ -30,12 +32,25 @@ class PokemonController {
       else where[field] = { [Op[op]]: value };
     }
 
-    const pokemons = await Pokemon.findAll({
+    if (req.query.search) {
+      const { search } = req.query;
+
+      where.name = { [Op.like]: `%${search}%` };
+    }
+
+    let pokemons = await Pokemon.findAll({
       where,
       limit: perPage,
       offset: perPage * page - perPage,
       order: [order],
     });
+
+    /**
+     * Includes each type info for front-end indexing,
+     * such as label & color.
+     */
+
+    if (req.query.includeTypes) pokemons = await IncludeType(pokemons);
 
     return res.json(pokemons);
   }
@@ -45,10 +60,12 @@ class PokemonController {
       pokedex: req.params.pokedex,
     };
 
-    const pokemon = await Pokemon.findOne({ where });
+    let pokemon = await Pokemon.findOne({ where });
 
     if (!pokemon)
       return res.status(400).json({ error: 'Pokemon does not exists' });
+
+    if (req.query.includeTypes) pokemon = await IncludeType(pokemon);
 
     return res.json(pokemon);
   }
@@ -113,10 +130,6 @@ class PokemonController {
       type: Yup.array(yupInt.required()),
       height: Yup.number().positive(),
       weight: Yup.number().positive(),
-      custom_picture: Yup.number()
-        .positive()
-        .integer()
-        .nullable(),
       external_picture: Yup.string(),
       hp: yupInt,
       attack: yupInt,
@@ -139,7 +152,9 @@ class PokemonController {
     if (!pokemon)
       return res.status(400).json({ error: 'Pokemon does not exists' });
 
-    const newPokemon = await pokemon.update(req.body);
+    let newPokemon = await pokemon.update(req.body);
+
+    if (req.query.includeTypes) newPokemon = await IncludeType(newPokemon);
 
     return res.json(newPokemon);
   }

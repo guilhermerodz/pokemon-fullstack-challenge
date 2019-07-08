@@ -10,7 +10,6 @@ class Pokemon extends Model {
         type: Sequelize.ARRAY(Sequelize.INTEGER),
         height: Sequelize.DECIMAL,
         weight: Sequelize.DECIMAL,
-        custom_picture: Sequelize.INTEGER,
         external_picture: Sequelize.STRING,
         hp: Sequelize.INTEGER,
         attack: Sequelize.INTEGER,
@@ -27,13 +26,6 @@ class Pokemon extends Model {
     );
 
     return this;
-  }
-
-  static associate(models) {
-    this.belongsTo(models.File, {
-      foreignKey: 'custom_picture',
-      as: 'picture',
-    });
   }
 }
 
