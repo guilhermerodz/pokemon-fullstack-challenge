@@ -4,6 +4,8 @@
 
 1. Abra o terminal neste mesmo diretório (**pokemon-server**).
 
-2. Digite `docker-compose up`.
+2. Digite `npm install` ou `yarn install`
 
-3. Feito. Volte e inicie o Front-end agora.
+3. Digite `docker-compose up`.
+
+4. Feito. Volte e inicie o Front-end agora.
