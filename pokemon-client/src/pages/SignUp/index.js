@@ -53,7 +53,7 @@ class SignUp extends Component {
 
     if (error) return;
 
-    const { nickname, password, confirmPassword } = this.state;
+    const { nickname, password } = this.state;
 
     try {
       await api.post('/users', { nickname, password });

@@ -25,6 +25,8 @@ routes.post('/files', upload.single('file'), FileController.store);
 
 routes.use(adminMiddleware);
 
+routes.get('/isAdmin', (_, res) => res.send());
+
 routes.get('/types', TypeController.index);
 routes.post('/types', TypeController.store);
 routes.put('/types/:id', TypeController.update);

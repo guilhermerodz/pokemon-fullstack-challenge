@@ -50,7 +50,8 @@ class PokemonController {
      * such as label & color.
      */
 
-    if (req.query.includeTypes) pokemons = await IncludeType(pokemons);
+    if (pokemons.length > 0 && req.query.includeTypes)
+      pokemons = await IncludeType(pokemons);
 
     return res.json(pokemons);
   }

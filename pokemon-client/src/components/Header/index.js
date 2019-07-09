@@ -1,33 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Header } from './styles';
 
 import logo from '../../assets/logo.svg';
 
-export default class extends Component {
-  state = {
-    enableSearch: this.props.enableSearch,
-    enableFilter: this.props.enableFilter,
-  };
+import SearchBar from '../SearchBar';
+import FilterBar from '../FilterBar';
 
-  render() {
-    const { enableSearch, enableFilter } = this.state;
+export default props => {
+  const { enableSearch, enableFilter, onSearch, onFilter } = props;
 
-    return (
-      <Header>
-        <div>
-          <div className="header-left-content">
-            {enableSearch && <span>Search</span>}
-          </div>
-          <Link to="/">
-            <img src={logo} alt="Logo" />
-          </Link>
-          <div className="header-right-content">
-            {enableFilter && <span>Filter</span>}
-          </div>
+  return (
+    <Header>
+      <div>
+        <div className="header-left-content">
+          {enableSearch && <SearchBar onSearch={onSearch || 0} />}
         </div>
-      </Header>
-    );
-  }
-}
+        <div className="header-right-content">
+          {enableFilter && <FilterBar onFilter={onFilter || 0} />}
+        </div>
+      </div>
+      <div className="header-logo">
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+        </Link>
+      </div>
+    </Header>
+  );
+};

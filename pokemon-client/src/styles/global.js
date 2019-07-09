@@ -29,6 +29,8 @@ export default createGlobalStyle`
     color: #313131;
     font-size: 14px;
     font-family: 'Lato', Arial, Helvetica, sans-serif;
+    border: 0;
+    outline: 0;
   }
 
   button {

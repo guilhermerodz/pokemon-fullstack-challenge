@@ -18,9 +18,16 @@ export const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  & > div.header-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
-      margin-top: 85px;
+      margin-top: -77px;
+      margin-bottom: 25px;
     }
   }
 `;

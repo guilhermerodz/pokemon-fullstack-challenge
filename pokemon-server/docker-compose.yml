@@ -12,9 +12,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  mongo:
-    image: mongo
-
   app:
     build: .
     command: yarn migrate
@@ -24,7 +21,6 @@ services:
       - '3333:3333'
     environment:
       - DB_HOST=postgres
-      - MONGO_HOST=mongo
     volumes:
       - .:/usr/app
 
